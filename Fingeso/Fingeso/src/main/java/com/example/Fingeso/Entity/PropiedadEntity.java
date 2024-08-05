@@ -10,90 +10,90 @@ public class PropiedadEntity {
 
     //Atributos
     @Id
-    private int Rol;
-    private String Tipo;
-    private String Tamanio;
-    private String Ubicacion;
-    private int Precio;
-    private String Imagenes;
-    private int Valoracion;
-    private String Contrato;
+    private int rol;
+    private String tipo;
+    private String Tamano;
+    private String ubicacion;
+    private int precio;
+    private String imagenes;
+    private int valoracion;
+    private String contrato;
 
     public PropiedadEntity(int rol, String tipo, String tamanio, String ubicacion, int precio, String imagenes, int valoracion, String contrato) {
-        Rol = rol;
-        Tipo = tipo;
-        Tamanio = tamanio;
-        Ubicacion = ubicacion;
-        Precio = precio;
-        Imagenes = imagenes;
-        Valoracion = valoracion;
-        Contrato = contrato;
+        this.rol = rol;
+        this.tipo = tipo;
+        Tamano = tamanio;
+        this.ubicacion = ubicacion;
+        this.precio = precio;
+        this.imagenes = imagenes;
+        this.valoracion = valoracion;
+        this.contrato = contrato;
     }
     public PropiedadEntity() {}
 
 
 
     public int getRol() {
-        return Rol;
+        return rol;
     }
 
     public void setRol(int rol) {
-        Rol = rol;
+        this.rol = rol;
     }
 
     public String getTipo() {
-        return Tipo;
+        return tipo;
     }
 
     public void setTipo(String tipo) {
-        Tipo = tipo;
+        this.tipo = tipo;
     }
 
-    public String getTamanio() {
-        return Tamanio;
+    public String getTamano() {
+        return Tamano;
     }
 
-    public void setTamanio(String tamanio) {
-        Tamanio = tamanio;
+    public void setTamano(String tamano) {
+        Tamano = tamano;
     }
 
     public String getUbicacion() {
-        return Ubicacion;
+        return ubicacion;
     }
 
     public void setUbicacion(String ubicacion) {
-        Ubicacion = ubicacion;
+        this.ubicacion = ubicacion;
     }
 
     public int getPrecio() {
-        return Precio;
+        return precio;
     }
 
     public void setPrecio(int precio) {
-        Precio = precio;
+        this.precio = precio;
     }
 
     public String getImagenes() {
-        return Imagenes;
+        return imagenes;
     }
 
     public void setImagenes(String imagenes) {
-        Imagenes = imagenes;
+        this.imagenes = imagenes;
     }
 
     public int getValoracion() {
-        return Valoracion;
+        return valoracion;
     }
 
     public void setValoracion(int valoracion) {
-        Valoracion = valoracion;
+        this.valoracion = valoracion;
     }
 
     public String getContrato() {
-        return Contrato;
+        return contrato;
     }
 
     public void setContrato(String contrato) {
-        Contrato = contrato;
+        this.contrato = contrato;
     }
 }

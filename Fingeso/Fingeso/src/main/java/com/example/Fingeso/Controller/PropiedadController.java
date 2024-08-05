@@ -14,10 +14,10 @@ public class PropiedadController {
     private PropiedadService propiedadService;
 
     //Nueva propiedad
-    @PostMapping("nueva")
+    @PostMapping("/nueva")
     public PropiedadEntity nuevaPropiedad(@RequestBody PropiedadEntity nuevo) {
 
-        return propiedadService.AgregarPropiedad(nuevo.getRol(), nuevo.getTipo(), nuevo.getTamanio(), nuevo.getUbicacion(), nuevo.getPrecio(), nuevo.getImagenes(), nuevo.getValoracion(), nuevo.getContrato());
+        return propiedadService.AgregarPropiedad(nuevo.getRol(), nuevo.getTipo(), nuevo.getTamano(), nuevo.getUbicacion(), nuevo.getPrecio(), nuevo.getImagenes(), nuevo.getValoracion(), nuevo.getContrato());
     }
 
 

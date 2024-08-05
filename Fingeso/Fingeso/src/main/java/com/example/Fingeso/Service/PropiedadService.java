@@ -11,11 +11,19 @@ public class PropiedadService {
     @Autowired
     private PropiedadRepository propiedadRepository;
 
-    public PropiedadEntity AgregarPropiedad(int Rol, String Tipo, String Tamanio, String Ubicacion, int Precio, String Imagenes, int Valoracion, String Contrato ){
-        PropiedadEntity propiedad = new PropiedadEntity(Rol,Tipo, Tamanio,Ubicacion,Precio,Imagenes,Valoracion,Contrato);
 
-        return propiedadRepository.save(propiedad);
+    public PropiedadEntity AgregarPropiedad(Integer rol, String Tipo, String Tamanio, String Ubicacion, int Precio, String Imagenes, int Valoracion, String Contrato ){
 
+        PropiedadEntity propiedad = new PropiedadEntity(rol,Tipo, Tamanio,Ubicacion,Precio,Imagenes,Valoracion,Contrato);
+
+        PropiedadEntity existe = propiedadRepository.findByRol(rol);
+
+        if(existe != null){
+            return null;
+        }
+        else {
+            return propiedadRepository.save(propiedad);
+        }
     }
 
 
