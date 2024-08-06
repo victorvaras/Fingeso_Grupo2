@@ -16,7 +16,21 @@ public class PropiedadService {
 
         PropiedadEntity propiedad = new PropiedadEntity(rol,Tipo, Tamanio,Ubicacion,Precio,Imagenes,Valoracion,Contrato);
 
-        PropiedadEntity existe = propiedadRepository.findByRol(rol);
+        if(propiedadRepository.existsByRol(rol)){
+            return null;
+        }
+        else {
+            return propiedadRepository.save(propiedad);
+        }
+
+    }
+
+
+}
+
+/*
+
+PropiedadEntity existe = propiedadRepository.findByRol(rol);
 
         if(existe != null){
             return null;
@@ -24,7 +38,4 @@ public class PropiedadService {
         else {
             return propiedadRepository.save(propiedad);
         }
-    }
-
-
-}
+ */

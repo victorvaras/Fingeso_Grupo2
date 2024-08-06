@@ -12,7 +12,7 @@ public class PropiedadEntity {
     @Id
     private int rol;
     private String tipo;
-    private String Tamano;
+    private String tamano;
     private String ubicacion;
     private int precio;
     private String imagenes;
@@ -22,7 +22,7 @@ public class PropiedadEntity {
     public PropiedadEntity(int rol, String tipo, String tamanio, String ubicacion, int precio, String imagenes, int valoracion, String contrato) {
         this.rol = rol;
         this.tipo = tipo;
-        Tamano = tamanio;
+        this.tamano = tamanio;
         this.ubicacion = ubicacion;
         this.precio = precio;
         this.imagenes = imagenes;
@@ -50,11 +50,11 @@ public class PropiedadEntity {
     }
 
     public String getTamano() {
-        return Tamano;
+        return tamano;
     }
 
     public void setTamano(String tamano) {
-        Tamano = tamano;
+        this.tamano = tamano;
     }
 
     public String getUbicacion() {
