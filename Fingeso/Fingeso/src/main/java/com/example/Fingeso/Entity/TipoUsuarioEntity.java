@@ -7,6 +7,8 @@ import java.util.List;
 @Table(name = "tipoUsuario")
 public class TipoUsuarioEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false)
     private int idTipoUsuario;
     private String tipoUsuario;
     //INTENTO DE FK
@@ -14,7 +16,7 @@ public class TipoUsuarioEntity {
     //private List usuario;
 
 
-    public TipoUsuarioEntity(int idTipoUsuario, String tipoUsuario) {
+    public TipoUsuarioEntity(int id, String tipoUsuario) {
         this.idTipoUsuario = idTipoUsuario;
         this.tipoUsuario = tipoUsuario;
     }

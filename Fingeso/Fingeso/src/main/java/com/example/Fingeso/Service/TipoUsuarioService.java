@@ -5,15 +5,22 @@ import com.example.Fingeso.Repository.TipoUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class TipoUsuarioService {
+
+    private final TipoUsuarioRepository tipoUsuarioRepository;
+
     @Autowired
-    private TipoUsuarioRepository tipoUsuarioRepository;
+    public TipoUsuarioService(TipoUsuarioRepository tipoUsuarioRepository) {
+        this.tipoUsuarioRepository = tipoUsuarioRepository;
+    }
 
     public TipoUsuarioEntity agregarTipoUsuario(int idTipoUsuario, String tipoUsuario) {
         TipoUsuarioEntity newtipoUsuario = new TipoUsuarioEntity(idTipoUsuario, tipoUsuario);
-        TipoUsuarioEntity existe = tipoUsuarioRepository.findbyId(idTipoUsuario);
-        if (existe != null) {
+        Optional<TipoUsuarioEntity> existe = tipoUsuarioRepository.findById(idTipoUsuario);
+        if (existe.isEmpty()) {
             return null;
         }else{
             return tipoUsuarioRepository.save(newtipoUsuario);

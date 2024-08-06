@@ -7,10 +7,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/tipo_usuario")
-@CrossOrigin
 public class TipoUsuarioController {
+
+    private final TipoUsuarioService tipoUsuarioService;
+
     @Autowired
-    private TipoUsuarioService tipoUsuarioService;
+    public TipoUsuarioController(TipoUsuarioService tipoUsuarioService) {
+        this.tipoUsuarioService = tipoUsuarioService;
+    }
 
     //nuevo tipo de usuario
     @PostMapping("/nuevoTipoUsuario")
