@@ -5,8 +5,10 @@ import com.example.Fingeso.Service.TipoUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/tipo_usuario")
+@RequestMapping("/tipousuario")
 public class TipoUsuarioController {
 
     private final TipoUsuarioService tipoUsuarioService;
@@ -16,9 +18,16 @@ public class TipoUsuarioController {
         this.tipoUsuarioService = tipoUsuarioService;
     }
 
-    //nuevo tipo de usuario
-    @PostMapping("/nuevoTipoUsuario")
-    public TipoUsuarioEntity nuevoTipoUsuario(@RequestBody TipoUsuarioEntity tipoUsuarioNuevo) {
-        return tipoUsuarioService.agregarTipoUsuario(tipoUsuarioNuevo.getIdTipoUsuario(),tipoUsuarioNuevo.getTipoUsuario());
+    @GetMapping("/tipousuario")
+    public List<TipoUsuarioEntity> getAllTipoUsuarios() {
+        return tipoUsuarioService.getAllTipoUsuario();
     }
+
+    //nuevo tipo de usuario
+    @PostMapping("/nuevo")
+    public TipoUsuarioEntity nuevoTipoUsuario(@RequestBody TipoUsuarioEntity tipoUsuarioNuevo) {
+        return tipoUsuarioService.crearTipoUsuario(tipoUsuarioNuevo.getIdTipoUsuario(),tipoUsuarioNuevo.getTipoUsuario());
+    }
+
+
 }

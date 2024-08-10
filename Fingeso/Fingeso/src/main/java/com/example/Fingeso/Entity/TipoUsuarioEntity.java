@@ -16,7 +16,7 @@ public class TipoUsuarioEntity {
     //private List usuario;
 
 
-    public TipoUsuarioEntity(int id, String tipoUsuario) {
+    public TipoUsuarioEntity(int idTipoUsuario, String tipoUsuario) {
         this.idTipoUsuario = idTipoUsuario;
         this.tipoUsuario = tipoUsuario;
     }

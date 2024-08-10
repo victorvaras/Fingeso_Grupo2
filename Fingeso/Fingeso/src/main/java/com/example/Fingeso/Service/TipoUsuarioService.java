@@ -5,6 +5,7 @@ import com.example.Fingeso.Repository.TipoUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,7 +18,11 @@ public class TipoUsuarioService {
         this.tipoUsuarioRepository = tipoUsuarioRepository;
     }
 
-    public TipoUsuarioEntity agregarTipoUsuario(int idTipoUsuario, String tipoUsuario) {
+    public List<TipoUsuarioEntity> getAllTipoUsuario() {
+        return tipoUsuarioRepository.findAll();
+    }
+
+    public TipoUsuarioEntity crearTipoUsuario(int idTipoUsuario, String tipoUsuario) {
         TipoUsuarioEntity newtipoUsuario = new TipoUsuarioEntity(idTipoUsuario, tipoUsuario);
         Optional<TipoUsuarioEntity> existe = tipoUsuarioRepository.findById(idTipoUsuario);
         if (existe.isEmpty()) {
