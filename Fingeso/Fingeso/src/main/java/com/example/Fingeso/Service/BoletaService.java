@@ -21,13 +21,12 @@ public class BoletaService {
     public BoletaEntity createBoleta( int monto, Date fecha, String medioPasarela ){
 
         BoletaEntity boleta = new BoletaEntity( monto, fecha, medioPasarela);
-        if(boletaRepository.existsBoleta(boleta.getId_Boleta())){
+        if(boletaRepository.existsBoleta(boleta.getIdBoleta())){
             return null;
         }
         else {
             return boletaRepository.save(boleta);
         }
-
     }
 
 

@@ -10,14 +10,14 @@ public class BoletaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_Boleta;
+    private int idBoleta;
     private int monto;
     private Date fecha;
     private String medio_Pasarela;
 
 
     public BoletaEntity(int monto, Date fecha, String medio_Pasarela) {
-        this.id_Boleta = id_Boleta;
+        this.idBoleta = idBoleta;
         this.monto = monto;
         this.fecha = fecha;
         this.medio_Pasarela = medio_Pasarela;
@@ -25,12 +25,12 @@ public class BoletaEntity {
     public BoletaEntity() {}
 
 
-    public int getId_Boleta() {
-        return id_Boleta;
+    public int getIdBoleta() {
+        return idBoleta;
     }
 
-    public void setId_Boleta(int id_Boleta) {
-        this.id_Boleta = id_Boleta;
+    public void setIdBoleta(int id_Boleta) {
+        this.idBoleta = id_Boleta;
     }
 
     public int getMonto() {
@@ -57,3 +57,12 @@ public class BoletaEntity {
         this.medio_Pasarela = medio_Pasarela;
     }
 }
+
+
+/*
+{
+  "monto": 3000,
+  "fecha": "2024-08-05T12:34:56",
+  "medio_Pasarela": "Debito"
+}
+ */

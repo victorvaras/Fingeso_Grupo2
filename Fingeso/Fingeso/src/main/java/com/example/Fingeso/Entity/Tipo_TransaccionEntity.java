@@ -37,3 +37,10 @@ public class Tipo_TransaccionEntity {
         this.tipo_Transaccion = tipo_Transaccion;
     }
 }
+
+/*
+{
+  "id_Tipo_usuario": 1,
+  "tipo_Transaccion": "Pago propiedad"
+}
+ */

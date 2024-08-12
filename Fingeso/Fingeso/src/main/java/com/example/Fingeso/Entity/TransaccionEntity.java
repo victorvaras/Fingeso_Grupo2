@@ -8,65 +8,73 @@ public class TransaccionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_Transaccion;
-    private String usuario_Origen;
-    private String usuario_Destino;
+    private int idTransaccion;
+
 
     @ManyToOne
-    @JoinColumn(name= "rol", nullable = false)
-    private PropiedadEntity rol;
+    @JoinColumn(name = "rut")
+    private UsuarioEntity usuarioOrigen;
+
 
     @ManyToOne
-    @JoinColumn(name = "id_Boleta", nullable = false)
-    private BoletaEntity id_Boleta;
+    @JoinColumn(name= "rol")
+    private PropiedadEntity propiedad;
 
+    @ManyToOne
+    @JoinColumn(name = "idBoleta")
+    private BoletaEntity boleta;
 
-    public TransaccionEntity(String usuario_Origen, String usuario_Destino, PropiedadEntity rol, BoletaEntity id_Boleta) {
-        this.usuario_Origen = usuario_Origen;
-        this.usuario_Destino = usuario_Destino;
-        this.rol = rol;
-        this.id_Boleta = id_Boleta;
+    public TransaccionEntity(UsuarioEntity usuarioOrigen, PropiedadEntity propiedad, BoletaEntity boleta) {
+        this.idTransaccion = idTransaccion;
+        this.usuarioOrigen = usuarioOrigen;
+        this.propiedad = propiedad;
+        this.boleta = boleta;
     }
 
     public TransaccionEntity() {}
 
-    public int getId_Transaccion() {
-        return id_Transaccion;
+    public int getIdTransaccion() {
+        return idTransaccion;
     }
 
-    public void setId_Transaccion(int id_Transaccion) {
-        this.id_Transaccion = id_Transaccion;
+    public void setIdTransaccion(int idTransaccion) {
+        this.idTransaccion = idTransaccion;
     }
 
-    public String getUsuario_Origen() {
-        return usuario_Origen;
+    public UsuarioEntity getUsuarioOrigen() {
+        return usuarioOrigen;
     }
 
-    public void setUsuario_Origen(String usuario_Origen) {
-        this.usuario_Origen = usuario_Origen;
+    public void setUsuarioOrigen(UsuarioEntity usuarioOrigen) {
+        this.usuarioOrigen = usuarioOrigen;
     }
 
-    public String getUsuario_Destino() {
-        return usuario_Destino;
+    public PropiedadEntity getPropiedad() {
+        return propiedad;
     }
 
-    public void setUsuario_Destino(String usuario_Destino) {
-        this.usuario_Destino = usuario_Destino;
+    public void setPropiedad(PropiedadEntity propiedad) {
+        this.propiedad = propiedad;
     }
 
-    public PropiedadEntity getRol() {
-        return rol;
+    public BoletaEntity getBoleta() {
+        return boleta;
     }
 
-    public void setRol(PropiedadEntity rol) {
-        this.rol = rol;
-    }
-
-    public BoletaEntity getId_Boleta() {
-        return id_Boleta;
-    }
-
-    public void setId_Boleta(BoletaEntity id_Boleta) {
-        this.id_Boleta = id_Boleta;
+    public void setBoleta(BoletaEntity boleta) {
+        this.boleta = boleta;
     }
 }
+
+/*
+{
+  "usuarioOrigen": "Usuario1",
+  "usuarioDestino": "Usuario2",
+  "propiedad": {
+    "rol": 1
+  },
+  "boleta": {
+    "idBoleta": 1
+  }
+}
+ */

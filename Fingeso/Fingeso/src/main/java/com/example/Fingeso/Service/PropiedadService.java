@@ -5,6 +5,8 @@ import com.example.Fingeso.Repository.PropiedadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PropiedadService {
 
@@ -12,17 +14,13 @@ public class PropiedadService {
     private PropiedadRepository propiedadRepository;
 
 
-    public PropiedadEntity AgregarPropiedad(Integer rol, String Tipo, String Tamanio, String Ubicacion, int Precio, String Imagenes, int Valoracion, String Contrato ){
+    public List<PropiedadEntity> getAllPropiedad(){
+        return propiedadRepository.findAll();
+    }
 
-        PropiedadEntity propiedad = new PropiedadEntity(rol,Tipo, Tamanio,Ubicacion,Precio,Imagenes,Valoracion,Contrato);
+    public PropiedadEntity AgregarPropiedad(PropiedadEntity Propiedad){
 
-        if(propiedadRepository.existsByRol(rol)){
-            return null;
-        }
-        else {
-            return propiedadRepository.save(propiedad);
-        }
-
+        return propiedadRepository.save(Propiedad);
     }
 
 

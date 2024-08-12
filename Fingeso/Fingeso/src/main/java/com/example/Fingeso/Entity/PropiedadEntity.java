@@ -1,8 +1,6 @@
 package com.example.Fingeso.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Propiedad")
@@ -19,18 +17,29 @@ public class PropiedadEntity {
     private int valoracion;
     private String contrato;
 
-    public PropiedadEntity(int rol, String tipo, String tamanio, String ubicacion, int precio, String imagenes, int valoracion, String contrato) {
+    @ManyToOne
+    @JoinColumn(name = "rut")
+    private UsuarioEntity propietario;
+
+    @ManyToOne
+    @JoinColumn(name = "idEstado")
+    private Estado_PropiedadEntity estadoPropiedad;
+
+
+    public PropiedadEntity(int rol, String tipo, String tamano, String ubicacion, int precio, String imagenes, int valoracion, String contrato, UsuarioEntity propietario, Estado_PropiedadEntity estadoPropiedad) {
         this.rol = rol;
         this.tipo = tipo;
-        this.tamano = tamanio;
+        this.tamano = tamano;
         this.ubicacion = ubicacion;
         this.precio = precio;
         this.imagenes = imagenes;
         this.valoracion = valoracion;
         this.contrato = contrato;
+        this.propietario = propietario;
+        this.estadoPropiedad = estadoPropiedad;
     }
-    public PropiedadEntity() {}
 
+    public PropiedadEntity() {}
 
 
     public int getRol() {
@@ -96,4 +105,45 @@ public class PropiedadEntity {
     public void setContrato(String contrato) {
         this.contrato = contrato;
     }
+
+    public UsuarioEntity getPropietario() {
+        return propietario;
+    }
+
+    public void setPropietario(UsuarioEntity propietario) {
+        this.propietario = propietario;
+    }
+
+    public Estado_PropiedadEntity getEstadoPropiedad() {
+        return estadoPropiedad;
+    }
+
+    public void setEstadoPropiedad(Estado_PropiedadEntity estadoPropiedad) {
+        this.estadoPropiedad = estadoPropiedad;
+    }
 }
+
+/*
+{
+  "rol": 1,
+  "tipo": "residencial",
+  "tamano": "100m2",
+  "ubicacion": "Centro",
+  "precio": 500000,
+  "imagenes": "imagen.jpg",
+  "valoracion": 4,
+  "contrato": "alquiler.dox",
+  "propietario": {
+        rut: "10"},
+
+
+
+}
+ @ManyToOne
+    @JoinColumn(name = "rut")
+    private UsuarioEntity propietario;
+
+    @ManyToOne
+    @JoinColumn(name = "idEstado")
+    private Estado_PropiedadEntity estadoPropiedad;
+ */
