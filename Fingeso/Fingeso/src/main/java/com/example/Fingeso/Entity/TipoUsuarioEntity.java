@@ -8,16 +8,12 @@ import java.util.List;
 public class TipoUsuarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
     private int idTipoUsuario;
     private String tipoUsuario;
-    //INTENTO DE FK
-    //@OneToMany (targetEntity = UsuarioEntity.class)
-    //private List usuario;
 
 
-    public TipoUsuarioEntity(int idTipoUsuario, String tipoUsuario) {
-        this.idTipoUsuario = idTipoUsuario;
+    public TipoUsuarioEntity(String tipoUsuario) {
+        this.idTipoUsuario=idTipoUsuario;
         this.tipoUsuario = tipoUsuario;
     }
 

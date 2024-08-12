@@ -22,13 +22,9 @@ public class TipoUsuarioService {
         return tipoUsuarioRepository.findAll();
     }
 
-    public TipoUsuarioEntity crearTipoUsuario(int idTipoUsuario, String tipoUsuario) {
-        TipoUsuarioEntity newtipoUsuario = new TipoUsuarioEntity(idTipoUsuario, tipoUsuario);
-        Optional<TipoUsuarioEntity> existe = tipoUsuarioRepository.findById(idTipoUsuario);
-        if (existe.isEmpty()) {
-            return null;
-        }else{
-            return tipoUsuarioRepository.save(newtipoUsuario);
-        }
+    public TipoUsuarioEntity crearTipoUsuario(String tipoUsuario) {
+        TipoUsuarioEntity newtipoUsuario = new TipoUsuarioEntity(tipoUsuario);
+        return tipoUsuarioRepository.save(newtipoUsuario);
+
     }
 }

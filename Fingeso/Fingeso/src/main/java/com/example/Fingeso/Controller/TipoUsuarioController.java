@@ -9,14 +9,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tipousuario")
+@CrossOrigin
 public class TipoUsuarioController {
 
-    private final TipoUsuarioService tipoUsuarioService;
-
     @Autowired
-    public TipoUsuarioController(TipoUsuarioService tipoUsuarioService) {
-        this.tipoUsuarioService = tipoUsuarioService;
-    }
+    TipoUsuarioService tipoUsuarioService;
 
     @GetMapping("/tipousuario")
     public List<TipoUsuarioEntity> getAllTipoUsuarios() {
@@ -26,7 +23,7 @@ public class TipoUsuarioController {
     //nuevo tipo de usuario
     @PostMapping("/nuevo")
     public TipoUsuarioEntity nuevoTipoUsuario(@RequestBody TipoUsuarioEntity tipoUsuarioNuevo) {
-        return tipoUsuarioService.crearTipoUsuario(tipoUsuarioNuevo.getIdTipoUsuario(),tipoUsuarioNuevo.getTipoUsuario());
+        return tipoUsuarioService.crearTipoUsuario(tipoUsuarioNuevo.getTipoUsuario());
     }
 
 

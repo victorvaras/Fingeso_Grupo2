@@ -13,6 +13,7 @@ public interface TipoUsuarioRepository extends JpaRepository<TipoUsuarioEntity, 
     // @Query("SELECT * FROM a WHERE a.name = ?1 AND a.password = ?2
     // ?1 ES EL PRIMER ARGUMENTO, ?2 ES ELL SEGUNDO ARGUMENTO, BLABLABLA
     // EN EL FIND BY ID ?1 SERÍA ID
+
     Optional<TipoUsuarioEntity> findById(int idTipoUsuario);
 
 }
