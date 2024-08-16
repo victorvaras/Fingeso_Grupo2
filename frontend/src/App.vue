@@ -19,5 +19,7 @@ body {
 #app {
   height: inherit;
   width: inherit;
+  display: flex;
+  flex-direction: column;
 }
 </style>

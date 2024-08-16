@@ -1,6 +1,5 @@
 <template>
-    <!-- Todas las class que se declaran es para poder trabajar mas comodamente con los css
-     -->
+    <!-- Todas las class que se declaran es para poder trabajar mas comodamente con los css -->
     <div class="portal-usuario">
         <header>
             <h1>Portal Usuario</h1>
@@ -46,9 +45,7 @@
                     </div>
                 </div>
             </div>
-            
         </section>
-
     </div>
 
 </template>

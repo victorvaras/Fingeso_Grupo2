@@ -25,9 +25,9 @@ public class UsuarioController {
         return usuarioService.crearUsuario(usuario);
 
     }
+    
 
-
-    @GetMapping("/login")
+    @PostMapping("/login")
     public int loginUsuario(@RequestBody UsuarioEntity usuario){
 
         UsuarioEntity usuarioValidar = usuarioService.loginUsuario(usuario);
