@@ -26,4 +26,19 @@ public class UsuarioController {
 
     }
 
+
+    @GetMapping("/login")
+    public int loginUsuario(@RequestBody UsuarioEntity usuario){
+
+        UsuarioEntity usuarioValidar = usuarioService.loginUsuario(usuario);
+
+        if( usuarioValidar != null){
+            return usuarioValidar.getTipoUsuario().getIdTipoUsuario();
+        }
+        else{
+            return 0;
+        }
+    }
+
+
 }

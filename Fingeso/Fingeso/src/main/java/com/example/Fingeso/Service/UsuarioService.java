@@ -27,4 +27,29 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
+    public UsuarioEntity usuarioByEmail(String email) {
+        return usuarioRepository.findByCorreo(email);
+    }
+
+
+    public UsuarioEntity loginUsuario(UsuarioEntity usuario) {
+
+        UsuarioEntity usuarioValidar = usuarioRepository.findByCorreo(usuario.getCorreo());
+
+        if (usuarioValidar != null) {
+            String correoValidar = usuario.getCorreo();
+
+
+
+            if (usuarioValidar.getCorreo().equals(correoValidar) && usuarioValidar.getContrasena().equals(usuario.getContrasena())) {
+                return usuarioValidar;
+            }
+            else{
+                return null;
+            }
+        }
+        else{
+            return null;
+        }
+    }
 }
