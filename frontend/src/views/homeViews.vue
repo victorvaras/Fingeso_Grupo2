@@ -6,55 +6,53 @@
     <main>
         <div class = "general">
             <div class = "content">
-                <img class = "image" src = "./media/hogar.png">
-                    <div class = "header">Hogar a un Click</div>
-                    <!-- Descripción del encabezado que cambia según el estado 'register' (variable) -->
-                    <div class = "headerDescription" v-if="!register">
-                        Completar campos para iniciar sesion
-                    </div>
-                    <div class = "headerDescription" v-else>
-                        Completar campos para registrarse
-                    </div>
-                    <!-- Formulario de inicio de sesión -->
-                    <div class = "inputContainer" v-if="!register"> 
-                        <input type="email" v-model="email"  placeholder="Ingrese Correo">
-                        <input type="password" v-model="password"  placeholder="Ingrese Contraseña">
-                        <button class = "sessionButton" @click="login">Iniciar Sesion</button>
-                    </div>   
-                    <!-- Formulario de registro (register = true)-->
-                    <div class = "inputContainer" v-else>
-                        <input type="text" id="rut" v-model="rut" placeholder="Ingrese RUT: 12.345.678-9">
-                        <input type="text" v-model="usernameLastNameRegister" placeholder="Ingrese Nombre Apellidos">
-                        <input type="email" v-model="emailRegister" placeholder="Ingrese Correo">
-                        <input type="password" v-model="passwordRegister" placeholder="Ingrese Contraseña">
-                        <input type="password" v-model="passwordRegisterConfirmation" placeholder="Repita Contraseña">
-                        <!-- Tipo de usuario -->
-                        <select class="form-select" v-model="selectedUserType" aria-label="Default select example">
-                            <option disabled value="">Seleccionar tipo de usuario</option>
-                            <option value="1">Comprador</option>
-                            <option value="2">Vendedor</option>
-                            <option value="3">Arrendador</option>
-                            <option value="4">Arrendatario</option>
-                        </select>
-                        <p><span style="color: black;">Opcion no obligatoria: </span></p>
-                        <input type="text" v-model="usernameAgency" placeholder="Ingrese Nombre de Agencia">
-                        <button class = "sessionButton" @click="addUser">Registrar</button>
-                    </div>
-                    <!-- Botones adicionales para cambiar entre inicio de sesión, registro y modo anónimo -->
-                    <div class = "alsoButtons">
-                        <div class="alsoButton" @click ="handleChange" v-if="!register">
-                            Registrarse
-                        </div>
-                        <div class="alsoButton" @click ="handleChange" v-else>
-                            Iniciar Sesion
-                        </div>
-                        <div class="alsoButton" @click ="anonimo">Anonimo</div>
-                    </div>
-                </img>
+              <img class = "image" src = "./media/hogar.png">
+              <div class = "header">Hogar a un Click</div>
+              <!-- Descripción del encabezado que cambia según el estado 'register' (variable) -->
+              <div class = "headerDescription" v-if="!register">
+                Completar campos para iniciar sesion
+              </div>
+              <div class = "headerDescription" v-else>
+                Completar campos para registrarse
+              </div>
+              <!-- Formulario de inicio de sesión -->
+              <div class = "inputContainer" v-if="!register">
+                <input type="email" v-model="email"  placeholder="Ingrese Correo">
+                <input type="password" v-model="password"  placeholder="Ingrese Contraseña">
+                <button class = "sessionButton" @click="login">Iniciar Sesion</button>
+              </div>
+              <!-- Formulario de registro (register = true)-->
+              <div class = "inputContainer" v-else>
+                <input type="text" id="rut" v-model="rut" placeholder="Ingrese RUT: 12.345.678-9">
+                <input type="text" v-model="usernameLastNameRegister" placeholder="Ingrese Nombre Apellidos">
+                <input type="email" v-model="emailRegister" placeholder="Ingrese Correo">
+                <input type="password" v-model="passwordRegister" placeholder="Ingrese Contraseña">
+                <input type="password" v-model="passwordRegisterConfirmation" placeholder="Repita Contraseña">
+                <!-- Tipo de usuario -->
+                <select class="form-select" v-model="selectedUserType" aria-label="Default select example">
+                  <option disabled value="">Seleccionar tipo de usuario</option>
+                  <option value="1">Comprador</option>
+                  <option value="2">Vendedor</option>
+                  <option value="3">Arrendador</option>
+                  <option value="4">Arrendatario</option>
+                </select>
+                <p><span style="color: black;">Opcion no obligatoria: </span></p>
+                <input type="text" v-model="usernameAgency" placeholder="Ingrese Nombre de Agencia">
+                <button class = "sessionButton" @click="addUser">Registrar</button>
+              </div>
+              <!-- Botones adicionales para cambiar entre inicio de sesión, registro y modo anónimo -->
+              <div class = "alsoButtons">
+                <div class="alsoButton" @click ="handleChange" v-if="!register">
+                  Registrarse
+                </div>
+                <div class="alsoButton" @click ="handleChange" v-else>
+                  Iniciar Sesion
+                </div>
+                <div class="alsoButton" @click ="anonimo">Anonimo</div>
+              </div>
             </div>
         </div>
     </main>
-
 </template>
 
 <script>
