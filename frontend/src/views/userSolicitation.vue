@@ -23,8 +23,8 @@
         <p>Explora las propiedades ideales que hay para ti</p>
       </div>
 
-      <div class="ApartadoBoton">
-        <section v-if="!isGuest" class="Boton-subir-propiedad">
+      <div v-if="!isGuest" class="ApartadoBoton">
+        <section class="Boton-subir-propiedad">
           <router-link to= "/SubirPropiedad">
             <div class = "SubirPropiedad" @click="handleChange"> Subir propiedad</div>
           </router-link> >
@@ -75,7 +75,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      username: "",
+      username: '',
       properties: [],
       currentPage: 1,
       itemsPerPage:6,
@@ -97,9 +97,9 @@ export default {
     const storedUsername = localStorage.getItem("login");
     if (storedUsername) {
       this.username = JSON.parse(storedUsername);
-    } else{
-      // If no username is found, assume the user is a guest
-      this.isGuest = true;
+      if (this.username === "anonimo"){
+        this.isGuest = !this.isGuest;
+      }
     }
     //Encuentra las casas
     this.fetchPropiedades();
@@ -144,6 +144,7 @@ export default {
 .TextoPropiedades {
   text-align: center;
   flex: 1;
+  margin: auto;
 }
 
 

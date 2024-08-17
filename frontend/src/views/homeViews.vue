@@ -120,10 +120,12 @@
                         // Manejo de diferentes respuestas del backend
                         // Distintos tipos de usuario redireccionan a distintas pantallas
                         if(respuesta.data == 2) { // Usuario tipo:
+                          localStorage.setItem("login", JSON.stringify(this.email));
                           redireccionarASubPaginaUsuario();
                             return 0;
                         }
                         if(respuesta.data == 3){ // Usuario tipo
+                          localStorage.setItem("login", JSON.stringify(this.email));
                           redireccionarASubPaginaUsuario();
                             return 0;
                         }
