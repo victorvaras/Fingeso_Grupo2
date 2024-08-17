@@ -1,94 +1,79 @@
 <template>
-    <!-- Todas las class que se declaran es para poder trabajar mas comodamente con los css -->
     <div class="portal-usuario">
-        <header>
-            <h1>Portal Usuario</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">Inicio</a></li>
-                    <li><a href="#properties">Propiedades</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                    <!-- Por mientras para saber que usuario esta conectado-->
-                    <span class="username">{{ username }}</span>               
-                    
-                </ul>
-            </nav>            
-        </header>
-
-        <section class="Boton-subir-propiedad">
+      <header>
+        <h1 class="userHeader">Portal Usuario</h1>
+        <nav>
+          <ul>
+            <li><a href="#home">Inicio</a></li>
+            <li><a href="#properties">Propiedades</a></li>
+            <li><a href="#perfil">Mi perfil</a></li>
+            <span class="username">{{ username }}</span>
+          </ul>
+        </nav>
+      </header>
+      <section class="Boton-subir-propiedad">
             <router-link to= "/SubirPropiedad"> 
                 <div class = "SubirPropiedad" @click="handleChange"> Subir propiedad</div>
             </router-link> >
         </section>
-
-        <section class="hero">
+      <section class="home">
             <h1>Propiedades Ideales</h1>
-            <!-- Parrafo-->
             <p>Explora las propiedades ideales que hay para ti</p>
-        </section>
-
-        <!-- Dado el id cuando se presione properties te manda a esta seccion -->
-        <section id="properties" class="properties">
-            <h1>Propiedades Disponibles</h1>
-
-            <!-- Se crean containers para las cartas -->
-            <div class="card-container"> 
-                <div class="card">
-                    <img src="./media/img1.jpg" alt="Imagen propiedad">
-                    <div class="card-content">
-                        <h3>Propiedad 1</h3>
-                        <p>Descripcion propiedad 1</p>
-                        <p>Precio: $2000/mes</p>
-                        <button>Ver más detalles</button>
+            <section id="properties" class="properties">
+                <div class="card-container">
+                    <!-- Usamos v-for para iterar sobre la lista de propiedades -->
+                    <div class="card" v-for="(property, index) in properties" :key="index">
+                        <img :src="property.imagenes" :alt="'Imagen propiedad ' + (index + 1)">
+                        <div class="card-content">
+                            <h3>{{ property.tipo }}</h3>
+                            <p>{{ property.descripcion }}</p>
+                            <p>Precio: {{ property.precio }}</p>
+                            <button>Ver más detalles</button>
+                        </div>
                     </div>
                 </div>
-                <div class="card">
-                    <img src="./media/img2.jpg" alt="Imagen propiedad">
-                    <div class="card-content">
-                        <h3>Propiedad 2</h3>
-                        <p>Descripcion propiedad 2 aaaaaaaaaa aaaaa asdjhasdjh ajhdajhasdjhas asdjhasjhdas hola</p>
-                        <p>Precio: $5000/mes</p>
-                        <button>Ver más detalles</button>
-                    </div>
-                </div>
-            </div>
+            </section>
         </section>
+      <footer>
+        <p>&copy; 2024 Hogar a un Click.</p>
+        <p><a href="#contact">Contáctanos</a> | <a href="#help">Ayuda</a></p>
+      </footer>
     </div>
-
-</template>
-
+  </template>
+  
 <script>
 
-import axios from 'axios'
+import axios from 'axios';
 
-function redireccionarASubPaginaSubirPropiedad() {
-        window.location.href = '/subir-propiedad';
+  export default {
+    data() {
+      return {
+        username: "",
+        properties: []
+      };
+    },
+    mounted() { //Es lo promero que se carga 
+      // Recupera el nombre de usuario de localStorage
+      const storedUsername = localStorage.getItem("login");
+      if (storedUsername) {
+        this.username = JSON.parse(storedUsername);
+      }
+      this.fetchProperties();
+    },
+    methods: {
+    async fetchProperties() {
+        try {
+            const response = await axios.get(import.meta.env.VITE_BASE_URL + "propiedad");
+            this.properties = response.data;
+        } catch (error) {
+            console.error('Error al obtener las propiedades:', error);
+            alert('No se pudieron cargar las propiedades.');
+        }
+        }
     }
+  };
+  </script>
 
-    export default {
-  data() {
-    return {
-      username: ""
-    };
-  },
-  mounted() {
-    // Recupera el nombre de usuario de localStorage
-    const storedUsername = localStorage.getItem("login");
-    if (storedUsername) {
-      this.username = JSON.parse(storedUsername);
-    }
-  }
-
-
-  
-};
-
-
-
-
-
-
-</script>
 
 <style scoped>
 
@@ -99,22 +84,32 @@ body {
     padding: 0;
 }
 
+.username{
+    color: black;
+}
+
 .portal-usuario {
     text-align: center;
-    
+    width: 100%;
+}
+
+.userHeader {
+    text-align: left;
+
 }
 
 header {
-    background-color: rgb(77, 244, 188);
+    background-color: rgb(106, 120, 115);
     color: aliceblue;
-    padding: 10px 0;
-}
+    padding: 30px;
 
+}
 
 nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    margin-top: 20px;
 }
 
 nav ul li {
@@ -123,24 +118,23 @@ nav ul li {
 }
 
 nav ul li a {
-    background-color: rgb(93, 219, 247);
+    background-color: rgb(80, 141, 155);
     border: none;
     border-radius: 10px;
     color: aliceblue;
     cursor: pointer;
     padding: 10px 20px;
     text-decoration: none;
-    transition: background-color 0.2s;
     /*transition: 0.3s;*/
 }
 
-.hero {
+.home {
     color: rgb(255, 255, 255);
-    background-color: rgb(185, 206, 224);
+    background-color: rgb(115, 128, 139);
     padding: 50px 0;
 }
 
-.hero h1 {
+.home h1 {
     font-size: 2.5em;
 }
 
@@ -150,14 +144,16 @@ nav ul li a {
 }
 
 .card-container {
-    display: flex;
+    display: grid;
     flex-wrap: wrap;
     justify-content: space-around;
     color: black;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
+    gap: 20px; 
 }
 
 .card {
-    background-color: rgb(241, 180, 99);
+    background-color: rgb(197, 162, 117);
     border: 1px solid rgb(255, 255, 255);
     border-radius: 10px;
     box-shadow: 0 4px 8px black;
@@ -192,7 +188,7 @@ nav ul li a {
 }
 
 .card-content button {
-    background-color: blue;
+    background-color: rgb(136, 113, 54);
     border: none;
     border-radius: 4px;
     color: white;
@@ -202,30 +198,29 @@ nav ul li a {
 }
 
 .card-content button:hover {
-    background-color: aqua;
+    background-color: rgb(91, 74, 30);
 }
 
-
-
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+  
+  footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
 
 .Boton-subir-propiedad{
     text-align: right; /* Alinea el contenido a la derecha */
 }
-
-#Boton-subir-propiedad {
-    background-color: #4CAF50; /* Color de fondo verde */
-    color: white; /* Color del texto blanco */
-    border: none; /* Sin borde */
-    padding: 10px 20px; /* Espaciado interno */
-    text-align: center; /* Alineación del texto */
-    text-decoration: none; /* Sin subrayado */
-    display: inline-block; /* Alineación en línea */
-    font-size: 16px; /* Tamaño de la fuente */
-    margin: 4px 2px; /* Margen alrededor del botón */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    border-radius: 4px; /* Bordes redondeados */
-    
-}
-
 
 </style>

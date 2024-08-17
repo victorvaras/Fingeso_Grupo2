@@ -41,6 +41,10 @@
             </form>
         </section>
     </div>
+    <footer>
+        <p>&copy; 2024 Hogar a un Click.</p>
+        <p><a href="#contact">Contáctanos</a> | <a href="#help">Ayuda</a></p>
+      </footer>
 </template>
 
 <script>
@@ -217,5 +221,22 @@ button:hover {
     background-color: #218838; /* Color verde más oscuro al pasar el ratón */
 }
 
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+  
+  footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
 
 </style>
