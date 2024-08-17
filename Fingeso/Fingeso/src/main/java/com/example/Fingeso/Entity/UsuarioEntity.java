@@ -121,3 +121,29 @@ public class UsuarioEntity {
         this.tipoUsuario = tipoUsuario;
     }
 }
+/*
+{
+        "rut": "10",
+        "nombreApellidos": "Pablito",
+        "correo": "pablo32@hotmail.com",
+        "contrasena": "123",
+        "nombreAgencia": "",
+        "documentacionOperacion": "",
+        "valoracion": 4,
+        "cuotasArriendo": 0,
+        "tipoUsuario": {
+        "idTipoUsuario": 2}
+        }
+
+
+        {
+        "rut": "10",
+        "nombreApellidos": "Pablito",
+        "correo": "pablo32@hotmail.com",
+        "contrasena": "123",
+        "valoracion": 4,
+        "cuotasArriendo": 0,
+        "tipoUsuario": {
+        "idTipoUsuario": 2}
+        }
+        */

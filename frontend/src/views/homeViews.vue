@@ -122,9 +122,11 @@
                         // Manejo de diferentes respuestas del backend
                         // Distintos tipos de usuario redireccionan a distintas pantallas
                         if(respuesta.data == 2) { // Usuario tipo:
+                          redireccionarASubPaginaUsuario();
                             return 0;
                         }
                         if(respuesta.data == 3){ // Usuario tipo
+                          redireccionarASubPaginaUsuario();
                             return 0;
                         }
                         if(respuesta.data == 1){ // tipo deusuario? => redirecciona a la vista que le corresponde al usuario

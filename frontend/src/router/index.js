@@ -1,4 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
+import HomeView from '../views/homeViews.vue';
+import UserSolicitation from '../views/userSolicitation.vue';
+import PropertyView from '../views/propertyView.vue';
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -6,13 +9,19 @@ const router = createRouter({
         {
             path: '/',
             name: 'home',
-            component: () => import('../views/homeViews.vue'),
-            alias: '/inicio'
+            component: HomeView,
+            alias: '/inicio',
         },
         {
             path: '/user',
             name: 'user',
-            component: () => import('../views/userSolicitation.vue'),
+            component: UserSolicitation,
+        },
+        {
+            path: '/property/:id',
+            name: 'propiedad',
+            component: PropertyView,
+            props: true,
         }
     ]
 });
