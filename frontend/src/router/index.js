@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
+
 import HomeView from '../views/homeViews.vue';
+import UploadProperty from '../views/subirPropiedad.vue';
 import UserSolicitation from '../views/userSolicitation.vue';
 import PropertyView from '../views/propertyView.vue';
 
@@ -16,6 +18,12 @@ const router = createRouter({
             path: '/user',
             name: 'user',
             component: UserSolicitation,
+        },
+        {
+            path: '/SubirPropiedad',
+            name: 'Subirpropiedad',
+            component: UploadProperty,
+            props: true,
         },
         {
             path: '/property/:id',
