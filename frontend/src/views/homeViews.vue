@@ -48,7 +48,9 @@
                         <div class="alsoButton" @click ="handleChange" v-else>
                             Iniciar Sesion
                         </div>
-                        <div class="alsoButton" @click ="anonimo">Anonimo</div>
+                        <div class="alsoButton" @click ="anonimo">
+                            Anonimo
+                        </div>
                     </div>
                 </img>
             </div>
@@ -121,7 +123,7 @@
                         
                         // Manejo de diferentes respuestas del backend
                         // Distintos tipos de usuario redireccionan a distintas pantallas
-                        if(respuesta.data == 2) { // Usuario tipo:
+                        if(respuesta == 2) { // Usuario tipo:
                             return 0;
                         }
                         if(respuesta.data == 3){ // Usuario tipo
@@ -284,7 +286,7 @@ input:hover {
 input:focus {
     border: #888888 solid 3px;
     transition: border 0.2s;
-}
+}   
 
 .alsoButtons {
     display: flex;

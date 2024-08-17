@@ -52,4 +52,11 @@ public class UsuarioService {
             return null;
         }
     }
+
+
+    public String getRutUsuario(String correo) {
+        UsuarioEntity usuario = usuarioRepository.findByCorreo(correo);
+        return usuario.getRut();
+    }
+
 }

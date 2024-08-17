@@ -23,8 +23,7 @@ public class PropiedadController {
 
     //Nueva propiedad
     @PostMapping("/nueva")
-    public PropiedadEntity nuevaPropiedad(@RequestBody PropiedadEntity nuevo) {
-
+    public int nuevaPropiedad(@RequestBody PropiedadEntity nuevo) {
         return propiedadService.AgregarPropiedad(nuevo);
     }
 

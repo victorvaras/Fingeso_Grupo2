@@ -40,5 +40,10 @@ public class UsuarioController {
         }
     }
 
+    @PostMapping("/obtener-rut")
+    public String obtenerRut(@RequestBody UsuarioEntity usuario){
+        return usuarioService.getRutUsuario(usuario.getCorreo());
+    }
+
 
 }

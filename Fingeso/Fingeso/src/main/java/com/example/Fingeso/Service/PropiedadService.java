@@ -18,9 +18,16 @@ public class PropiedadService {
         return propiedadRepository.findAll();
     }
 
-    public PropiedadEntity AgregarPropiedad(PropiedadEntity Propiedad){
+    public int AgregarPropiedad(PropiedadEntity Propiedad){
 
-        return propiedadRepository.save(Propiedad);
+        boolean validacion = propiedadRepository.existsByRol(Propiedad.getRol());
+        if(validacion){
+            return 0;
+        }
+        else{
+            propiedadRepository.save(Propiedad);
+            return 1;
+        }
     }
 
 

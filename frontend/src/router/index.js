@@ -1,3 +1,4 @@
+import SubirPropiedad from "@/views/subirPropiedad.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
@@ -13,6 +14,12 @@ const router = createRouter({
             path: '/user',
             name: 'user',
             component: () => import('../views/userSolicitation.vue'),
+        },
+        {
+            path: '/SubirPropiedad',
+            name: 'SubirPropiedad',
+            component: ()=> import('../views/subirPropiedad.vue')
+
         }
     ]
 });

@@ -9,10 +9,17 @@
                     <li><a href="#properties">Propiedades</a></li>
                     <li><a href="#contact">Contacto</a></li>
                     <!-- Por mientras para saber que usuario esta conectado-->
-                    <span class="username">{{ username }}</span>
+                    <span class="username">{{ username }}</span>               
+                    
                 </ul>
-            </nav>
+            </nav>            
         </header>
+
+        <section class="Boton-subir-propiedad">
+            <router-link to= "/SubirPropiedad"> 
+                <div class = "SubirPropiedad" @click="handleChange"> Subir propiedad</div>
+            </router-link> >
+        </section>
 
         <section class="hero">
             <h1>Propiedades Ideales</h1>
@@ -51,6 +58,13 @@
 </template>
 
 <script>
+
+import axios from 'axios'
+
+function redireccionarASubPaginaSubirPropiedad() {
+        window.location.href = '/subir-propiedad';
+    }
+
     export default {
   data() {
     return {
@@ -64,7 +78,15 @@
       this.username = JSON.parse(storedUsername);
     }
   }
+
+
+  
 };
+
+
+
+
+
 
 </script>
 
@@ -79,6 +101,7 @@ body {
 
 .portal-usuario {
     text-align: center;
+    
 }
 
 header {
@@ -86,6 +109,7 @@ header {
     color: aliceblue;
     padding: 10px 0;
 }
+
 
 nav ul {
     list-style-type: none;
@@ -180,5 +204,28 @@ nav ul li a {
 .card-content button:hover {
     background-color: aqua;
 }
+
+
+
+
+.Boton-subir-propiedad{
+    text-align: right; /* Alinea el contenido a la derecha */
+}
+
+#Boton-subir-propiedad {
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: white; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    text-align: center; /* Alineación del texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Alineación en línea */
+    font-size: 16px; /* Tamaño de la fuente */
+    margin: 4px 2px; /* Margen alrededor del botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    border-radius: 4px; /* Bordes redondeados */
+    
+}
+
 
 </style>
