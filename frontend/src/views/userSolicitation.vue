@@ -12,17 +12,29 @@
         </ul>
       </nav>
     </header>
-    <section v-if="!isGuest" class="Boton-subir-propiedad">
-      <router-link to= "/SubirPropiedad">
-        <div class = "SubirPropiedad" @click="handleChange"> Subir propiedad</div>
-      </router-link> >
+
+    
+
+  <div> 
+    <section class="home">
+      <div  class="TextoPropiedades"> 
+        <h1>Propiedades Ideales</h1>
+        <!-- Parrafo-->
+        <p>Explora las propiedades ideales que hay para ti</p>
+      </div>
+
+      <div class="ApartadoBoton">
+        <section v-if="!isGuest" class="Boton-subir-propiedad">
+          <router-link to= "/SubirPropiedad">
+            <div class = "SubirPropiedad" @click="handleChange"> Subir propiedad</div>
+          </router-link> >
+        </section>
+      </div>
+    
     </section>
 
-    <section class="home">
-      <h1>Propiedades Ideales</h1>
-      <!-- Parrafo-->
-      <p>Explora las propiedades ideales que hay para ti</p>
-    </section>
+    
+  </div>
 
     <!-- Dado el id cuando se presione properties te manda a esta seccion -->
     <section id="properties" class="properties">
@@ -44,8 +56,8 @@
       </div>
       <div  class="pagination-controls">
         <button @click="prevPage" :disabled="currentPage===1">Anterior</button>
-        <span> {{currentPage}} de {{totalPages}} </span>
-        <button @click="nextPage" :disabled="currentPage === totalPages">Siguiente</button>
+        <span class="botones-siguiente"> {{currentPage}} de {{totalPages}} </span>
+        <button  @click="nextPage" :disabled="currentPage === totalPages">Siguiente</button>
       </div>
     </section>
   </div>
@@ -66,7 +78,7 @@ export default {
       username: "",
       properties: [],
       currentPage: 1,
-      itemsPerPage:4,
+      itemsPerPage:6,
       isGuest: false,
     };
   },
@@ -123,6 +135,17 @@ export default {
 
 <style scoped>
 
+.botones-siguiente{
+  color: #2b1515;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.TextoPropiedades {
+  text-align: center;
+  flex: 1;
+}
+
 
 body {
   font-family: Arial, sans-serif;
@@ -169,6 +192,9 @@ nav ul li a {
   color: rgb(255, 255, 255);
   background-color: rgb(115, 128, 139);
   padding: 50px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .home h1 {
@@ -178,6 +204,11 @@ nav ul li a {
 .properties {
   color: rgb(255, 255, 255);
   padding: 50px 0;
+  background-color: antiquewhite;
+}
+
+.properties h1{
+  color: #333;
 }
 
 .card-container {
@@ -205,8 +236,8 @@ nav ul li a {
 
 .card img {
   border-radius: 8px 8px 0 0;
-  max-width: 100%;
-  height: auto;
+  width: 300px;
+  height: 200px;
 }
 
 .card content {
@@ -237,8 +268,10 @@ nav ul li a {
   background-color: #e5a388;
 }
 .pagination-controls{
-
+  margin-top: 20px;
 }
+
+
 
 .menu-propiedades {
   background-color: #efd7cd;
@@ -271,7 +304,7 @@ footer a:hover {
 
 .Boton-subir-propiedad {
 
-  background-color: #9fcc9f; /* Color de fondo verde */
+  background-color: #4e657a; /* Color de fondo verde */
   color: white; /* Color del texto blanco */
   border: none; /* Sin borde */
   padding: 10px 20px; /* Espaciado interno */
@@ -284,5 +317,17 @@ footer a:hover {
   border-radius: 4px; /* Bordes redondeados */
 
 }
+
+.ApartadoBoton{
+  text-align: right;
+  display: flex;
+  margin-right: 50px;
+
+}
+
+.SubirPropiedad{
+  color: white;
+}
+
 
 </style>
