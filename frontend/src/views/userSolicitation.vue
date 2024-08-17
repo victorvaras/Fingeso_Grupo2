@@ -1,8 +1,8 @@
 <template>
     <!-- Todas las class que se declaran es para poder trabajar mas comodamente con los css -->
-    <div class="portal-usuario">
-        <header>
-            <h1>Portal Usuario</h1>
+  <div class="portal-usuario">
+    <header>
+      <h1>Portal Usuario</h1>
             <nav>
                 <ul>
                     <li><a href="#home">Inicio</a></li>
@@ -21,49 +21,89 @@
         </section>
 
         <!-- Dado el id cuando se presione properties te manda a esta seccion -->
-        <section id="properties" class="properties">
-            <h1>Propiedades Disponibles</h1>
-
-            <!-- Se crean containers para las cartas -->
-            <div class="card-container"> 
-                <div class="card">
-                    <img src="./media/img1.jpg" alt="Imagen propiedad">
-                    <div class="card-content">
-                        <h3>Propiedad 1</h3>
-                        <p>Descripcion propiedad 1</p>
-                        <p>Precio: $2000/mes</p>
-                        <button>Ver más detalles</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="./media/img2.jpg" alt="Imagen propiedad">
-                    <div class="card-content">
-                        <h3>Propiedad 2</h3>
-                        <p>Descripcion propiedad 2 aaaaaaaaaa aaaaa asdjhasdjh ajhdajhasdjhas asdjhasjhdas hola</p>
-                        <p>Precio: $5000/mes</p>
-                        <button>Ver más detalles</button>
-                    </div>
-                </div>
+      <section id="properties" class="properties">
+        <h1>Propiedades Disponibles</h1>
+        <div class="menu-propiedades">
+          <div class="card-container">
+            <div v-for="(casa, index) in paginaCasas" :key="casa.id" class="card">
+              <!-- Esto ocupa una sintaxis literal de texto para evaluarse con :src y comillas -->
+              <img :src="`src/media/propiedades/${casa.imagenes}`" alt="Imagen propiedad">
+              <div class="card-content">
+                <h3>{{ casa.tipo }}</h3>
+                <p>Valoracion: {{ casa.valoracion }}</p>
+                <p>Precio: $2000/mes</p>
+                <button @click="verPropiedad(index)">Ver más detalles</button>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+        <div  class="pagination-controls">
+          <button @click="prevPage" :disabled="currentPage===1">Anterior</button>
+          <span> {{currentPage}} de {{totalPages}} </span>
+          <button @click="nextPage" :disabled="currentPage === totalPages">Siguiente</button>
+        </div>
+      </section>
     </div>
 
 </template>
 
 <script>
-    export default {
+
+import axios from "axios";
+
+export default {
   data() {
     return {
-      username: ""
-    };
+        username: "",
+        properties: [],
+        currentPage: 1,
+        itemsPerPage:4,
+  };
   },
-  mounted() {
-    // Recupera el nombre de usuario de localStorage
-    const storedUsername = localStorage.getItem("login");
-    if (storedUsername) {
-      this.username = JSON.parse(storedUsername);
-    }
-  }
+computed: {
+  totalPages() {
+    return Math.ceil(this.properties.length / this.itemsPerPage);
+  },
+  paginaCasas() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    return this.properties.slice(start, end);
+  },
+},
+mounted() {
+  // Recupera el nombre de usuario de localStorage
+  const storedUsername = localStorage.getItem("login");
+  if (storedUsername) {
+    this.username = JSON.parse(storedUsername);
+   }
+  //Encuentra las casas
+  this.fetchPropiedades();
+  },
+  methods: {
+    async fetchPropiedades() {
+      try {
+        const response = await axios.get(import.meta.env.VITE_BASE_URL + "propiedad");
+        this.properties = response.data;
+      } catch (error) {
+        console.error('Error al obtener las propiedades:', error);
+        alert('No se pudieron cargar las propiedades.');
+      }
+    },
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+      }
+    },
+    prevPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
+    verPropiedad(id) {
+      // Aqui dependiendo del boton que se clickee con una id, se hara ruta a mostrar los datos de esa id
+      this.$router.push({ name: 'propiedad', params: { id:id } });
+    },
+  },
 };
 
 </script>
@@ -164,21 +204,29 @@ nav ul li a {
 }
 
 .card-content p {
-    margin: o.5em 0;
+    margin: 0.5em 0;
 }
 
 .card-content button {
-    background-color: blue;
+    background-color: #f0c0ab;
     border: none;
     border-radius: 4px;
-    color: white;
+    color: #2b1515;
     cursor: pointer;
     padding: 10px;
     width: 100%;
 }
 
 .card-content button:hover {
-    background-color: aqua;
+    background-color: #e5a388;
+}
+.pagination-controls{
+
 }
 
+.menu-propiedades {
+  background-color: #efd7cd;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 20px;
+}
 </style>
