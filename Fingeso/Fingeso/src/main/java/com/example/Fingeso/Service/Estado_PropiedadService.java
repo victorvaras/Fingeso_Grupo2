@@ -24,4 +24,17 @@ public class Estado_PropiedadService {
         return estadoPropiedadRepository.save(estadoPropiedad);
     }
 
+
+    public void cargarDataEstadoPropiedad() {
+        List<Estado_PropiedadEntity> estadoPropiedad = estadoPropiedadRepository.findAll();
+        if(estadoPropiedad.size()>0){
+            return;
+        }
+        else{
+            Estado_PropiedadEntity newEstado_Venta = new Estado_PropiedadEntity(1,"Venta");
+            Estado_PropiedadEntity newEstado_Arriendo = new Estado_PropiedadEntity(2,"Arriendo");
+            Estado_PropiedadEntity newEstado_Finalizada = new Estado_PropiedadEntity(3,"Finalizada");
+        }
+    }
+
 }

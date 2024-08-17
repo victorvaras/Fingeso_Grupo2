@@ -10,7 +10,7 @@ public interface PropiedadRepository extends JpaRepository<PropiedadEntity, Inte
 
 
     @Query("SELECT CASE WHEN COUNT(p) > 0 THEN TRUE ELSE FALSE END FROM PropiedadEntity p WHERE p.rol = :rol")
-    boolean existsByRol(@Param("rol")int rol);
+    boolean existsByRol(@Param("rol") int rol);
 
 
 }

@@ -14,6 +14,7 @@ public class PropiedadEntity {
     private String ubicacion;
     private int precio;
     private String imagenes;
+    private String descripcion;
     private int valoracion;
     private String contrato;
 
@@ -26,13 +27,14 @@ public class PropiedadEntity {
     private Estado_PropiedadEntity estadoPropiedad;
 
 
-    public PropiedadEntity(int rol, String tipo, String tamano, String ubicacion, int precio, String imagenes, int valoracion, String contrato, UsuarioEntity propietario, Estado_PropiedadEntity estadoPropiedad) {
+    public PropiedadEntity(int rol, String tipo, String tamano, String ubicacion, int precio, String imagenes, String descripcion, int valoracion, String contrato, UsuarioEntity propietario, Estado_PropiedadEntity estadoPropiedad) {
         this.rol = rol;
         this.tipo = tipo;
         this.tamano = tamano;
         this.ubicacion = ubicacion;
         this.precio = precio;
         this.imagenes = imagenes;
+        this.descripcion = descripcion;
         this.valoracion = valoracion;
         this.contrato = contrato;
         this.propietario = propietario;
@@ -88,6 +90,14 @@ public class PropiedadEntity {
 
     public void setImagenes(String imagenes) {
         this.imagenes = imagenes;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public int getValoracion() {

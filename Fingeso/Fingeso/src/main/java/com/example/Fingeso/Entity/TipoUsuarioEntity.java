@@ -35,15 +35,3 @@ public class TipoUsuarioEntity {
         this.tipoUsuario = tipoUsuario;
     }
 }
-
-/*
-{
-  "idTipoUsuario" : 1,
-  "tipoUsuario" : "Comprador"
-}
-{
-  "idTipoUsuario" : 2,
-  "tipoUsuario" : "Arrendador"
-}
-
-*/
