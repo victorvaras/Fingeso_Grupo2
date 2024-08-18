@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/propiedad")
@@ -18,6 +19,11 @@ public class PropiedadController {
     @GetMapping
     public List<PropiedadEntity> getPropiedades() {
         return propiedadService.getAllPropiedad();
+    }
+
+    @GetMapping("/{Id}")
+    public Optional<PropiedadEntity> findById(@PathVariable int Id) {
+        return propiedadService.findByRol(Id);
     }
 
 

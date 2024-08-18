@@ -5,8 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.Optional;
+
 public interface PropiedadRepository extends JpaRepository<PropiedadEntity, Integer> {
-    PropiedadEntity findByRol(int rol);
+    Optional<PropiedadEntity> findByRol(int rol);
 
 
     @Query("SELECT CASE WHEN COUNT(p) > 0 THEN TRUE ELSE FALSE END FROM PropiedadEntity p WHERE p.rol = :rol")

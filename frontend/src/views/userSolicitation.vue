@@ -41,7 +41,7 @@
       <h1>Propiedades Disponibles</h1>
       <div class="menu-propiedades">
         <div class="card-container">
-          <div v-for="(casa, index) in paginaCasas" :key="casa.id" class="card">
+          <div v-for="(casa, index) in paginaCasas" :key="casa.rol" class="card">
             <!-- Esto ocupa una sintaxis literal de texto para evaluarse con :src y comillas -->
             <img :src="casa.imagenes" :alt="'Imagen propiedad ' + (index + 1)">
             <div class="card-content">
@@ -192,10 +192,9 @@ nav ul li a {
 .home {
   color: rgb(255, 255, 255);
   background-color: rgb(115, 128, 139);
-  padding: 50px 0;
+  padding: 20px 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .home h1 {

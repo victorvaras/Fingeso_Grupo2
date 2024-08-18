@@ -1,10 +1,10 @@
 <template>
   <div class="full-pantalla">
     <header>
-      <h1>Subir Propiedad</h1>
+      <h1 style="color: #282828">Subir Propiedad</h1>
     </header>
     <section class="subir-propiedad">
-      <h2>Formulario para Subir Propiedad</h2>
+      <h2 style="color: #282828">Formulario para Subir Propiedad</h2>
       <form id="propertyForm" @submit.prevent="subirNewPropiedad">
         <div class="form-group">
           <!-- <label for="propiedad-Rol">ROL de propiedad:</label> -->
