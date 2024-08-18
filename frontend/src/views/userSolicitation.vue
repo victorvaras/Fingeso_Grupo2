@@ -61,6 +61,11 @@
       </div>
     </section>
   </div>
+  <!--Se añade el boton de logout para volver al login-->
+  <div class="logout-container">
+    <button class="logout-button" @click="logout">Cerrar sesión</button>
+  </div>
+
   <footer>
     <p>&copy; 2024 Hogar a un Click.</p>
     <p><a href="#contact">Contáctanos</a> | <a href="#help">Ayuda</a></p>
@@ -127,6 +132,11 @@ export default {
     verPropiedad(id) {
       // Aqui dependiendo del boton que se clickee con una id, se hara ruta a mostrar los datos de esa id
       this.$router.push({ name: 'propiedad', params: { id:id } });
+    },
+    logout(){
+      localStorage.removeItem('authToken');
+      this.$router.push('/');
+      alert("Sesion finalizada.");
     },
   },
 };
@@ -329,5 +339,24 @@ footer a:hover {
   color: white;
 }
 
+.logout-container {
+  position: fixed;
+  top: 10px; /* Distancia desde la parte superior */
+  right: 10px; /* Distancia desde la parte derecha */
+}
+
+.logout-button {
+  background-color: #f44336; /* Color de fondo del botón */
+  color: white; /* Color del texto */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f; /* Color al pasar el mouse */
+}
 
 </style>
