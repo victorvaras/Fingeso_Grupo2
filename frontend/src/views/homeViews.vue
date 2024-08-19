@@ -6,7 +6,6 @@
     <main>
         <div class = "general">
             <div class = "content">
-              <img class = "image" src = "./media/hogar.png">
               <div class = "header">Hogar a un Click</div>
               <!-- Descripción del encabezado que cambia según el estado 'register' (variable) -->
               <div class = "headerDescription" v-if="!register">
@@ -52,7 +51,16 @@
               </div>
             </div>
         </div>
+
+        <footer>
+        <p>&copy; 2024 Hogar a un Click.</p>
+        <p><a href="#contact">Contáctanos</a> | <a href="#help">Ayuda</a></p>
+    </footer>
     </main>
+
+    
+
+    
 </template>
 
 <script>
@@ -161,7 +169,7 @@
                 this.email = "anonimo"
                 redireccionarASubPaginaUsuarioAnonimo();
                 localStorage.setItem("login", JSON.stringify(this.email));
-                alert("Inicio anonimo correcto");
+                //alert("Inicio anonimo correcto");
             },
             // Método para registrar un nuevo usuario
             async addUser() { // Cambiado aquí
@@ -185,6 +193,7 @@
                             const registro = await axios.post(import.meta.env.VITE_BASE_URL + "usuario/nuevo", nuevo_usuario);
                             console.log(registro)
                             alert("Usuario creado con exito")
+                            this.register=!this.register
                         } catch (error) {
                             alert("No se pudo registrar al usuario")       
                         }
@@ -204,11 +213,25 @@
 
 <style scoped>
 
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    left: 0;
+}
+
 .general {
 
-    /*background-image: url("./media/img2.jpg");*/
     background-color: rgb(81, 81, 81);
-    height: 100vh;
+    flex: 1;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -217,11 +240,8 @@
     align-items: center;
     align-content: center;
     margin: 0;
+    width: 100%;
 
-}
-
-.image {
-    height: 100px;
 }
 
 .content {
@@ -328,12 +348,26 @@ input:focus {
     transition: all 0.2s;
 }
 
-/*
-@media (min-width: 418px){
-    .content {
-        max-height: 500px;
-    }
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  margin-top: auto;
 }
-*/
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+
 </style>
 

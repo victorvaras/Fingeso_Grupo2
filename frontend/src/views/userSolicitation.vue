@@ -25,9 +25,9 @@
 
       <div v-if="!isGuest" class="ApartadoBoton">
         <section class="Boton-subir-propiedad">
-          <router-link to= "/SubirPropiedad">
-            <div class = "SubirPropiedad" @click="handleChange"> Subir propiedad</div>
-          </router-link> >
+          
+            <button class = "SubirPropiedad" @click="goSubirPropiedad"> Subir propiedad</button>
+          
         </section>
       </div>
     
@@ -136,8 +136,11 @@ export default {
     logout(){
       localStorage.removeItem('authToken');
       this.$router.push('/');
-      alert("Sesion finalizada.");
+      //alert("Sesion finalizada.");
     },
+    goSubirPropiedad(){
+      this.$router.push('/SubirPropiedad');
+    }
   },
 };
 
@@ -314,17 +317,17 @@ footer a:hover {
 
 .Boton-subir-propiedad {
 
-  background-color: #4e657a; /* Color de fondo verde */
-  color: white; /* Color del texto blanco */
-  border: none; /* Sin borde */
-  padding: 10px 20px; /* Espaciado interno */
-  text-align: center; /* Alineación del texto */
-  text-decoration: none; /* Sin subrayado */
-  display: inline-block; /* Alineación en línea */
-  font-size: 16px; /* Tamaño de la fuente */
-  margin: 4px 2px; /* Margen alrededor del botón */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-  border-radius: 4px; /* Bordes redondeados */
+  background-color: rgb(115, 128, 139); 
+  color: white; 
+  border: none; 
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 16px;
+  margin: 4px 2px; 
+  cursor: pointer; 
+  border-radius: 4px;
 
 }
 
@@ -336,7 +339,9 @@ footer a:hover {
 }
 
 .SubirPropiedad{
-  color: white;
+  color: rgb(0, 0, 0);
+  background-color: #4e657a;
+  padding: 10px 10px;
 }
 
 .logout-container {

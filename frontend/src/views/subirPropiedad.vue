@@ -1,47 +1,59 @@
 <template>
   <div class="full-pantalla">
-    <header>
-      <h1 style="color: #282828">Subir Propiedad</h1>
-    </header>
-    <section class="subir-propiedad">
-      <h2 style="color: #282828">Formulario para Subir Propiedad</h2>
-      <form id="propertyForm" @submit.prevent="subirNewPropiedad">
-        <div class="form-group">
-          <!-- <label for="propiedad-Rol">ROL de propiedad:</label> -->
-          <input type="text" placeholder="ROL de propiedad" v-model="propiedadRol" required>
-        </div>
-        <div class="form-group">
-          <!-- <label for="propiedad-tipo">Tipo de propiedad:</label> -->
-          <input type="text" placeholder="Tipo de propiedad" v-model="propiedadTipo" required>
-        </div>
-        <div class="form-group">
-          <!-- <label for="propiedad-tamaño">Tamaño propiedad:</label> -->
-          <input type="number" placeholder="Tamaño propiedad" v-model="propiedadTamano" required>
-        </div>
-        <div class="form-group">
-          <!-- <label for="propiedad-ubicacion">Ubicación:</label>  -->
-          <input type="text" placeholder="Ubicación" v-model="propiedadUbicacion" required>
-        </div>
-        <div class="form-group">
-          <!-- <label for="propiedad-precio">Precio propiedad:</label>  -->
-          <input type="number" placeholder="Precio propiedad" v-model="propiedadPrecio" required>
-        </div>
-        <div class="form-group">
-          <!-- <label for="propiedad-imagen">Imagen propiedad:</label>  -->
-          <input type="text" placeholder="Imagen propiedad" v-model="propiedadImagen" required>
-        </div>
-        <div class="form-group">
-          <!--<label for="propiedad-descripcion">Descripción propiedad:</label>  -->
-          <input type="text" placeholder="Descripción propiedad" v-model="propiedadDescripcion" required>
-        </div>
-        <button type="submit">Subir Propiedad</button>
-      </form>
-    </section>
+    
+   
+    <div class="property-detail">
+      <div class="title-container">
+        <h1>Subir Propiedad</h1>
+      </div>
+      <button class="back-button" @click="goBack">Volver al menú</button>
+    </div>
+
+    <div class= "fondo">
+
+      <section class="subir-propiedad">
+        <h2 style="color: black">Formulario para Subir Propiedad</h2>
+        <form id="propertyForm" @submit.prevent="subirNewPropiedad">
+          <div class="form-group">
+            <!-- <label for="propiedad-Rol">ROL de propiedad:</label> -->
+            <input type="number" placeholder="ROL de la propiedad" v-model="propiedadRol" required>
+          </div>
+          <div class="form-group">
+            <!-- <label for="propiedad-tipo">Tipo de propiedad:</label> -->
+            <input type="text" placeholder="Tipo de propiedad" v-model="propiedadTipo" required>
+          </div>
+          <div class="form-group">
+            <!-- <label for="propiedad-tamaño">Tamaño propiedad:</label> -->
+            <input type="number" placeholder="Tamaño de la propiedad" v-model="propiedadTamano" required>
+          </div>
+          <div class="form-group">
+            <!-- <label for="propiedad-ubicacion">Ubicación:</label>  -->
+            <input type="text" placeholder="Ubicación propiedad" v-model="propiedadUbicacion" required>
+          </div>
+          <div class="form-group">
+            <!-- <label for="propiedad-precio">Precio propiedad:</label>  -->
+            <input type="number" placeholder="Precio propiedad" v-model="propiedadPrecio" required>
+          </div>
+          <div class="form-group">
+            <!-- <label for="propiedad-imagen">Imagen propiedad:</label>  -->
+            <input type="text" placeholder="Imagen de la propiedad (url de imagen)" v-model="propiedadImagen" required>
+          </div>
+          <div class="form-group">
+            <!--<label for="propiedad-descripcion">Descripción propiedad:</label>  -->
+            <input type="text" placeholder="Descripción de la propiedad" v-model="propiedadDescripcion" required>
+          </div>
+          <button type="submit">Subir Propiedad</button>
+        </form>
+      </section>
+
+    </div>
+  
+
+    <footer>
+      <p>&copy; 2024 Hogar a un Click.</p>
+      <p><a href="#contact">Contáctanos</a> | <a href="#help">Ayuda</a></p>
+    </footer>
   </div>
-  <footer>
-    <p>&copy; 2024 Hogar a un Click.</p>
-    <p><a href="#contact">Contáctanos</a> | <a href="#help">Ayuda</a></p>
-  </footer>
 </template>
 
 <script>
@@ -92,7 +104,7 @@ export default {
           "idEstado": this.estadoPropiedad
         }
       };
-      console.log("Enviando datos:", new_propiedad); // Para depuración
+      console.log("Enviando datos:", new_propiedad);
       try {
         const response = await axios.post(import.meta.env.VITE_BASE_URL + "propiedad/nueva", new_propiedad);
         if(response.data == 1){
@@ -106,90 +118,115 @@ export default {
         }
 
       } catch (error) {
-        console.error("Error al subir la propiedad:", error); // Mejorado para depuración
+        console.error("Error al subir la propiedad:", error);
         alert("Error al subir la propiedad");
       }
-    }
+    },
+    goBack() {
+      this.$router.push('/user');}
   }
 }
 </script>
 <style scoped>
-/* Aplica el estilo a toda la vista */
+
 .full-pantalla {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Ocupa toda la altura de la ventana */
+  height: 100vh; 
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5; /* Color de fondo suave */
+  background-color: #f5f5f5;
 }
-/* Estilo para el encabezado */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50px; /* Altura del encabezado reducida */
-  background-color: #ffffff; /* Fondo blanco para el encabezado */
-  text-align: center;
-  line-height: 50px; /* Centra verticalmente el texto */
-  font-size: 20px;
-  font-style: italic; /* Texto en cursiva */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra ligera para el encabezado */
-  z-index: 1000; /* Asegura que el encabezado esté en la parte superior */
+
+
+
+.property-detail {
+  position: relative; /* Necesario para posicionar el botón */
+  padding: 20px;
+  text-align: center; /* Centra el título horizontalmente */
+  background-color: rgb(81, 81, 81);
 }
-/* Estilo para la sección del formulario */
+
+.title-container {
+  display: inline-block;
+  
+}
+
+.property-detail h1 {
+  color: rgb(255, 255, 255);
+  margin: 0;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px; 
+  left: 20px; 
+  background-color: #ddd;
+  color: black;
+}
+
+.back-button:hover{
+  background-color: red;
+}
+
+
+.fondo{
+  background-color: #979897;
+}
+
+
 .subir-propiedad {
-  margin: 80px 20px 20px 20px; /* Ajusta el margen inferior para dejar espacio para el encabezado */
-  background-color: #ffffff; /* Fondo blanco para el formulario */
+  margin: 20px 20px 20px 20px;
+  background-color: #ffffff;
   padding: 15px;
-  border-radius: 8px; /* Bordes redondeados */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra ligera para el formulario */
-  max-width: 800px; /* Ancho máximo del formulario */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  overflow: hidden; /* Evita que el contenido se desborde */
-  flex: 1; /* Permite que el formulario crezca y ocupe el espacio disponible */
+  overflow: hidden;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centra verticalmente el formulario */
+  justify-content: center;
 }
-/* Estilo para los grupos de formularios */
+
 .form-group {
-  margin-bottom: 12px; /* Espacio entre los campos del formulario reducido */
+  margin-bottom: 12px;
 }
-/* Estilo para las etiquetas del formulario */
+
 label {
   display: block;
   font-size: 14px;
-  color: #333; /* Color de texto oscuro para contraste */
+  color: #333;
   margin-bottom: 5px;
 }
-/* Estilo para los campos de entrada del formulario */
+
 input[type="text"],
 input[type="number"] {
   width: 100%;
-  padding: 8px; /* Reducido el padding para campos más pequeños */
+  padding: 8px;
   font-size: 14px;
-  border: 1px solid #ddd; /* Borde sutil */
-  border-radius: 4px; /* Bordes redondeados en los campos de entrada */
+  border: 1px solid #ddd;
+  border-radius: 4px;
   box-sizing: border-box;
 }
-/* Estilo para el botón de enviar */
+
 button {
-  background-color: #28a745; /* Color verde para el botón */
-  color: #ffffff; /* Texto blanco */
+  background-color: #28a745;
+  color: #ffffff;
   border: none;
-  padding: 8px 16px; /* Reducido el padding del botón */
+  padding: 8px 16px;
   font-size: 16px;
-  border-radius: 4px; /* Bordes redondeados en el botón */
-  cursor: pointer; /* Cambia el cursor cuando se pasa sobre el botón */
-  transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-/* Estilo para el botón al pasar el ratón sobre él */
+
 button:hover {
-  background-color: #218838; /* Color verde más oscuro al pasar el ratón */
+  background-color: #218838;
 }
+
 footer {
   background-color: #333;
   color: #fff;
@@ -207,4 +244,6 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+
+
 </style>
