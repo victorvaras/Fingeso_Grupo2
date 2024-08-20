@@ -34,6 +34,9 @@ public class Estado_PropiedadService {
             Estado_PropiedadEntity newEstado_Venta = new Estado_PropiedadEntity(1,"Venta");
             Estado_PropiedadEntity newEstado_Arriendo = new Estado_PropiedadEntity(2,"Arriendo");
             Estado_PropiedadEntity newEstado_Finalizada = new Estado_PropiedadEntity(3,"Finalizada");
+            estadoPropiedadRepository.save(newEstado_Venta);
+            estadoPropiedadRepository.save(newEstado_Arriendo);
+            estadoPropiedadRepository.save(newEstado_Finalizada);
         }
     }
 

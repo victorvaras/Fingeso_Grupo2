@@ -1,22 +1,24 @@
 <template>
 
   <div class="property-detail">
-    <button class="back-button" @click="goBack">Volver al menú</button>
+    <button class="back-button" @click="goBack">Volver al Menú</button>
   </div>
     <div class="box-property">
       <div class="property-container">
         <img :src="property.imagenes" alt="Imagen de la propiedad" class="property-image" />
         <div class="property-info">
-          <h1>Casa {{ property.tipo }}</h1>
-          <p>Tamaño: {{ property.tamano }}</p>
+          <h1>{{ property.tipo }}</h1>
+          <p>Tamaño: {{ property.tamano }} m&sup2</p>
+          <p>Dirección: {{ property.ubicacion }}</p>
           <p>Descripción: {{ property.descripcion }}</p>
+          <p>Valoración: {{ property.valoracion }}</p>
           <p>Precio: ${{ property.precio }}</p>
-          <p>Estado: {{ property.idEstado || 'No disponible' }}</p>
+          <p>Estado: {{ estado || 'No disponible' }}</p>
           <button
               class="action-button"
               :class="{
-              'rent': property.idEstado === 'arrendar',
-              'buy': property.idEstado === 'comprar',
+              'rent': estado === 'Arriendo',
+              'buy': property.idEstado === 'Venta',
               'reserve': !property.idEstado
             }"
           >
@@ -40,6 +42,7 @@ export default {
   data() {
     return {
       property: [],
+      estado: [],
       buttonText: ''
     };
   },
@@ -53,15 +56,17 @@ export default {
       try {
         const response = await axios.get(import.meta.env.VITE_BASE_URL + `propiedad/${this.id}`);
         this.property = response.data;
+        this.estado =this.property.estadoPropiedad.estado
       } catch (error) {
         console.error('Error al obtener las propiedades:', error);
         alert('No se pudieron cargar las propiedades.');
       }
     },
     updateButtonText() {
-      if (this.property.idEstado === 'arrendar') {
+     
+      if (this.estado === "Arriendo" ) {
         this.buttonText = 'Arrendar';
-      } else if (this.property.idEstado === 'comprar') {
+      } else if (this.estado === 'Venta') {
         this.buttonText = 'Comprar';
       } else {
         this.buttonText = 'Reservar';

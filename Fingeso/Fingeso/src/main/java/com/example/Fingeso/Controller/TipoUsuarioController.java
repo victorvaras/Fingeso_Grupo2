@@ -26,5 +26,10 @@ public class TipoUsuarioController {
         return tipoUsuarioService.crearTipoUsuario(tipoUsuarioNuevo.getTipoUsuario());
     }
 
+    @GetMapping("/buscar-id/{id}")
+    public TipoUsuarioEntity buscarTipoUsuarioId(@PathVariable int id) {
+        return tipoUsuarioService.buscarById(id);
+    }
+
 
 }

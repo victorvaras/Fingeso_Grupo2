@@ -9,7 +9,7 @@
               <div class = "header">Hogar a un Click</div>
               <!-- Descripción del encabezado que cambia según el estado 'register' (variable) -->
               <div class = "headerDescription" v-if="!register">
-                Completar campos para iniciar sesion
+                Completar campos para iniciar sesión
               </div>
               <div class = "headerDescription" v-else>
                 Completar campos para registrarse
@@ -18,7 +18,7 @@
               <div class = "inputContainer" v-if="!register">
                 <input type="email" v-model="email"  placeholder="Ingrese Correo">
                 <input type="password" v-model="password"  placeholder="Ingrese Contraseña">
-                <button class = "sessionButton" @click="login">Iniciar Sesion</button>
+                <button class = "sessionButton" @click="login">Iniciar Sesión</button>
               </div>
               <!-- Formulario de registro (register = true)-->
               <div class = "inputContainer" v-else>
@@ -35,7 +35,7 @@
                   <option value="3">Arrendador</option>
                   <option value="4">Arrendatario</option>
                 </select>
-                <p><span style="color: black;">Opcion no obligatoria: </span></p>
+                <p><span style="color: black;">Opción no obligatoria: </span></p>
                 <input type="text" v-model="usernameAgency" placeholder="Ingrese Nombre de Agencia">
                 <button class = "sessionButton" @click="addUser">Registrar</button>
               </div>
@@ -45,9 +45,9 @@
                   Registrarse
                 </div>
                 <div class="alsoButton" @click ="handleChange" v-else>
-                  Iniciar Sesion
+                  Iniciar Sesión
                 </div>
-                <div class="alsoButton" @click ="anonimo">Anonimo</div>
+                <div class="alsoButton" @click ="anonimo">Anónimo</div>
               </div>
             </div>
         </div>
@@ -125,38 +125,25 @@
                         // Envia una solicitud POST al backend con usuario
                         const respuesta = await axios.post(import.meta.env.VITE_BASE_URL + "usuario/login", usuario);
                         
-                        // Manejo de diferentes respuestas del backend
-                        // Distintos tipos de usuario redireccionan a distintas pantallas
-                        if(respuesta.data == 2) { // Usuario tipo:
+                        
+                        if(respuesta.data == 1 || respuesta.data == 2 ||respuesta.data == 3 || respuesta.data == 4 || respuesta.data ==5 ){ // Usuario tipo
                           localStorage.setItem("login", JSON.stringify(this.email));
                           redireccionarASubPaginaUsuario();
                             return 0;
                         }
-                        if(respuesta.data == 3){ // Usuario tipo
-                          localStorage.setItem("login", JSON.stringify(this.email));
-                          redireccionarASubPaginaUsuario();
-                            return 0;
-                        }
-                        if(respuesta.data == 1){ // tipo deusuario? => redirecciona a la vista que le corresponde al usuario
-                            /*
-                            Almacenar el Nombre de Usuario: Este código guarda el valor de this.email en localStorage bajo la clave "login" 
-                            Por ejemplo, si this.email es "usuario123", entonces la clave "login" en localStorage tendrá el valor "usuario123"
-                            */
-                            localStorage.setItem("login", JSON.stringify(this.email));
-                            redireccionarASubPaginaUsuario();
-                            //alert("Inicio correcto");
-                        }
+                        
                         if(respuesta.data == 0){
-                            alert("Credenciales invalidas.");
+                            alert("Credenciales inválidas.");
                         }
                         respuesta.data = 0;
                         console.log(respuesta.data);
+
                     } catch (error) {
                         alert("No se genera conexión con el servidor.");  
                     }
                 }
                 else{
-                    alert("Ingresar un mail y contraseña validos.")
+                    alert("Ingresar un mail y contraseña válidos.")
                 }
             },
             // Método para alternar entre el formulario de inicio de sesión y registro
@@ -166,7 +153,7 @@
             },
             // Método para manejar el modo anónimo
             anonimo(){
-                this.email = "anonimo"
+                this.email = "anónimo"
                 redireccionarASubPaginaUsuarioAnonimo();
                 localStorage.setItem("login", JSON.stringify(this.email));
                 //alert("Inicio anonimo correcto");
@@ -192,7 +179,7 @@
                         try {
                             const registro = await axios.post(import.meta.env.VITE_BASE_URL + "usuario/nuevo", nuevo_usuario);
                             console.log(registro)
-                            alert("Usuario creado con exito")
+                            alert("Usuario creado con éxito")
                             this.register=!this.register
                         } catch (error) {
                             alert("No se pudo registrar al usuario")       

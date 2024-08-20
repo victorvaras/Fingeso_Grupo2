@@ -29,6 +29,10 @@ public class TipoUsuarioService {
 
     }
 
+    public TipoUsuarioEntity buscarById(int id) {
+        return tipoUsuarioRepository.findById(id);
+    }
+
 
     public void cargarDataTipoUsuario() {
         List<TipoUsuarioEntity> tipoUsuario = tipoUsuarioRepository.findAll();

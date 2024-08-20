@@ -26,7 +26,6 @@ public class PropiedadController {
         return propiedadService.findByRol(Id);
     }
 
-
     //Nueva propiedad
     @PostMapping("/nueva")
     public int nuevaPropiedad(@RequestBody PropiedadEntity nuevo) {

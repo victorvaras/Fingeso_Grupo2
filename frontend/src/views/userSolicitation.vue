@@ -20,7 +20,7 @@
       <div  class="TextoPropiedades"> 
         <h1>Propiedades Ideales</h1>
         <!-- Parrafo-->
-        <p>Explora las propiedades ideales que hay para ti</p>
+        <p>Explora las propiedades ideales que hay para tí</p>
       </div>
 
       <div v-if="!isGuest" class="ApartadoBoton">
@@ -47,8 +47,9 @@
             <div class="card-content">
               <h3>{{ casa.tipo }}</h3>
               <p>{{ casa.descripcion }}</p>
-              <p>Valoracion: {{ casa.valoracion }}</p>
-              <p>Precio: {{ casa.precio }}</p>
+              <p>Valoración: {{ casa.valoracion }}</p>
+              <p>Precio: ${{ casa.precio }}</p>
+              <p>Estado: {{ casa.estadoPropiedad.estado }}</p>
               <button @click="verPropiedad(casa.rol)">Ver más detalles</button>
             </div>
           </div>
@@ -102,7 +103,7 @@ export default {
     const storedUsername = localStorage.getItem("login");
     if (storedUsername) {
       this.username = JSON.parse(storedUsername);
-      if (this.username === "anonimo"){
+      if (this.username === "anónimo"){
         this.isGuest = !this.isGuest;
       }
     }

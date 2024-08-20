@@ -6,7 +6,7 @@
       <div class="title-container">
         <h1>Subir Propiedad</h1>
       </div>
-      <button class="back-button" @click="goBack">Volver al menú</button>
+      <button class="back-button" @click="goBack">Volver al Menú</button>
     </div>
 
     <div class= "fondo">
@@ -15,32 +15,32 @@
         <h2 style="color: black">Formulario para Subir Propiedad</h2>
         <form id="propertyForm" @submit.prevent="subirNewPropiedad">
           <div class="form-group">
-            <!-- <label for="propiedad-Rol">ROL de propiedad:</label> -->
-            <input type="number" placeholder="ROL de la propiedad" v-model="propiedadRol" required>
+            
+            <input type="number" placeholder="ROL de la Propiedad" v-model="propiedadRol" required>
           </div>
           <div class="form-group">
-            <!-- <label for="propiedad-tipo">Tipo de propiedad:</label> -->
-            <input type="text" placeholder="Tipo de propiedad" v-model="propiedadTipo" required>
+            
+            <input type="text" placeholder="Tipo de Propiedad" v-model="propiedadTipo" required>
           </div>
           <div class="form-group">
-            <!-- <label for="propiedad-tamaño">Tamaño propiedad:</label> -->
-            <input type="number" placeholder="Tamaño de la propiedad" v-model="propiedadTamano" required>
+            
+            <input type="number" placeholder="Tamaño de la Propiedad" v-model="propiedadTamano" required>
           </div>
           <div class="form-group">
-            <!-- <label for="propiedad-ubicacion">Ubicación:</label>  -->
-            <input type="text" placeholder="Ubicación propiedad" v-model="propiedadUbicacion" required>
+            
+            <input type="text" placeholder="Ubicación Propiedad" v-model="propiedadUbicacion" required>
           </div>
           <div class="form-group">
-            <!-- <label for="propiedad-precio">Precio propiedad:</label>  -->
-            <input type="number" placeholder="Precio propiedad" v-model="propiedadPrecio" required>
+            
+            <input type="number" placeholder="Precio Propiedad" v-model="propiedadPrecio" required>
           </div>
           <div class="form-group">
-            <!-- <label for="propiedad-imagen">Imagen propiedad:</label>  -->
-            <input type="text" placeholder="Imagen de la propiedad (url de imagen)" v-model="propiedadImagen" required>
+            
+            <input type="text" placeholder="Imagen de la Propiedad (URL de Imagen)" v-model="propiedadImagen" required>
           </div>
           <div class="form-group">
-            <!--<label for="propiedad-descripcion">Descripción propiedad:</label>  -->
-            <input type="text" placeholder="Descripción de la propiedad" v-model="propiedadDescripcion" required>
+            
+            <input type="text" placeholder="Descripción de la Propiedad" v-model="propiedadDescripcion" required>
           </div>
           <button type="submit">Subir Propiedad</button>
         </form>
@@ -73,9 +73,8 @@ export default {
       propiedadDescripcion: '',
       valoracion: 0,
       contrato: '',
-      //propietario: '12345678-9',  // Ejemplo de valor predeterminado
       propietario: '',
-      estadoPropiedad: 1          // Ejemplo de valor predeterminado
+      estadoPropiedad: 1          
     }
   },
   methods: {
@@ -85,6 +84,7 @@ export default {
         "correo": email_a
       }
 
+      //Conexion con Backend
       const rut_a = await axios.post(import.meta.env.VITE_BASE_URL + "usuario/obtener-rut", user_a);
 
       const new_propiedad = {
